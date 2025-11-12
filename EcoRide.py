@@ -1,6 +1,5 @@
 # Programa: EcoRide - Alquiler de Bicicletas Eléctricas
-
-print("🚴‍♂️ Bienvenido a EcoRide GreenCity 🚴‍♀️")
+print(" Bienvenido a EcoRide GreenCity ")
 
 continuar = True
 
@@ -19,7 +18,6 @@ while continuar:
 
         tipo = input("Selecciona el tipo (1 o 2): ")
         
-
         if tipo == "1":
             tipo_bici = "Estándar"
             tarifa = 0.5
@@ -43,24 +41,28 @@ while continuar:
 
         # Método de pago
         metodo = input("Método de pago (efectivo / tarjeta / puntos): ").lower()
+        if metodo not in ["efectivo", "tarjeta", "puntos"]:
+            print("Método de pago inválido.")
+            continue
 
         # Día de la semana
         fin_semana = input("¿Es sábado o domingo? (si/no): ").lower() == "si"
 
         # Devolución fuera de tiempo
-        fuera_tiempo = input("¿Devolvió la bicicleta fuera del tiempo? (si/no): ").lower() == "si"
+        fuera_tiempo = input("¿Devolvió la bicicleta fuera de" \
+        "l tiempo? (si/no): ").lower() == "si"
 
         # Cálculo del costo
         costo_base = tarifa * minutos
         descuento = 0
         penalizacion = 0
-
+         
         # Descuentos
         if minutos > 60 and metodo == "tarjeta":
             descuento += costo_base * 0.10  # 10% por tiempo y tarjeta
         elif minutos < 10 and metodo == "puntos":
             descuento += 0  # sin descuento
-
+       
         # Descuento fin de semana
         if fin_semana:
             descuento += costo_base * 0.05  # 5% de descuento
@@ -86,15 +88,17 @@ while continuar:
         print("Premium : $0.8 por minuto")
 
     elif opcion == "3":
-        print("\nGracias por usar EcoRide. ¡Hasta pronto! 🌱")
+        print("\nGracias por usar EcoRide. ¡Hasta pronto! ")
         continuar = False
-
     else:
         print("Opción inválida.")
 
     # Preguntar si desea continuar
     if continuar:
-        seguir = input("\n¿Deseas realizar otra operación? (si/no): ").lower()
-        if seguir != "si":
-            continuar = False
-            print("¡Gracias por usar EcoRide! 🌍")
+            seguir = input("\n¿Deseas realizar otra operación? (si/no): ").lower()
+            if seguir != "si":
+                continuar = False
+                print("¡Gracias por usar EcoRide! ")
+# Fin del programa EcoRide.py
+
+
